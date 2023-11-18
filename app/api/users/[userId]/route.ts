@@ -10,6 +10,12 @@ export async function PUT(req: Request, route: { params: { userId: string } }) {
 
     const isExistinUsername = await User.findOne({ username: body.username });
 
+    if (body.profileImage || body.coverImage) {
+      await User.findByIdAndUpdate(userId, body, { new: true });
+
+      return NextResponse.json({ message: "User updated successfully" });
+    }
+
     if (isExistinUsername) {
       return NextResponse.json(
         { error: "Username already exists" },
