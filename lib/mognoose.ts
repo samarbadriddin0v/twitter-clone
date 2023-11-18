@@ -15,7 +15,7 @@ export const connectToDatabase = async () => {
 
   try {
     const options: ConnectOptions = {
-      dbName: "twitter-x",
+      dbName: "x",
       autoCreate: true,
     };
 
