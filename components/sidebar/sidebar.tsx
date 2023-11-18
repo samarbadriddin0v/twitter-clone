@@ -7,6 +7,7 @@ import SidebarItem from "./sidebar-item";
 import SidebarPostButton from "./sidebar-post-button";
 import SidebarAccount from "./sidebar-account";
 import { IUser } from "@/types";
+import { MdOutlineExplore } from "react-icons/md";
 
 const Sidebar = ({ user }: { user: IUser }) => {
   const sidebarItems = [
@@ -25,6 +26,11 @@ const Sidebar = ({ user }: { user: IUser }) => {
       label: "Profile",
       path: `/profile/${user?._id}`,
       icon: User,
+    },
+    {
+      label: "Explore",
+      path: "/explore",
+      icon: MdOutlineExplore,
     },
   ];
 

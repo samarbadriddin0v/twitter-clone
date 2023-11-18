@@ -16,11 +16,13 @@ const FollowBar = () => {
       <div className="bg-neutral-800 rounded-xl ">
         <div className="flex items-center justify-between px-4 pt-4">
           <h2 className="text-white text-xl font-semibold">Who to follow</h2>
-          <Button
-            secondary
-            label={"See all"}
-            classNames="h-[30px] p-0 w-fit px-3 text-sm"
-          />
+          <Link href="/explore">
+            <Button
+              secondary
+              label={"See all"}
+              classNames="h-[30px] p-0 w-fit px-3 text-sm"
+            />
+          </Link>
         </div>
 
         {isLoading ? (
