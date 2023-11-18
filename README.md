@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center" id="title">Building a Twitter Clone with Next.js React.js TypeScript MongoDB and Node.js</h1>
 
-## Getting Started
+<p align="center"><img src="https://media.graphassets.com/5n5X81rASgiMbk1w8woh" alt="project-image"></p>
 
-First, run the development server:
+<p id="description">🚀 Dive into the world of modern web development with our latest project - a Twitter Clone! 🐦 In this exciting video we walk you through the technology stack we used to bring this social media platform to life.</p>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<h2>🚀 Demo</h2>
+
+[https://x.sammi.pro/](https://x.sammi.pro/)
+
+  
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   Authentication system
+*   Following functionality
+*   Comments / Replies
+*   Likes functionality
+*   Google / Github authorization
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Cloning the repository</p>
+
+```
+https://github.com/samarbadriddin0v/twitter-clone
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+<p>2. Install packages</p>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<p>3. Setup .env file</p>
 
-## Learn More
+```
+GITHUB_CLIENT_ID=
+```
 
-To learn more about Next.js, take a look at the following resources:
+```
+GITHUB_CLIENT_SECRET=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+GOOGLE_CLIENT_ID=
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```
+GOOGLE_CLIENT_SECRET=
+```
 
-## Deploy on Vercel
+```
+NEXTAUTH_URL=
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+MONGO_URI=
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+NEXTAUTH_JWT_SECRET=
+```
+
+```
+NEXTAUTH_SECRET=
+```
+
+<p>11. Start the app</p>
+
+```
+npm run dev
+```
+
+  
+  
+<h2>💻 Built with</h2>
+
+Technologies used in the project:
+
+*   ReactJS
+*   NextJS
+*   NodeJS
+*   ExpressJS
+*   TailwindCSS
+*   Next auth
+*   MongoDB
+*   Mongoose
+*   Lodash
