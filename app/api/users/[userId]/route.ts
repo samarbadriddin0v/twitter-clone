@@ -8,24 +8,30 @@ export async function PUT(req: Request, route: { params: { userId: string } }) {
     const body = await req.json();
     const { userId } = route.params;
 
-    const isExistinUsername = await User.findOne({ username: body.username });
+    const { searchParams } = new URL(req.url);
+    const type = searchParams.get("type");
 
-    if (body.profileImage || body.coverImage) {
+    if (type === "updateImage") {
+      await User.findByIdAndUpdate(userId, body, { new: true });
+
+      return NextResponse.json({ message: "User updated successfully" });
+    } else if (type === "updateFields") {
+      const existUser = await User.findById(userId);
+
+      if (body.username !== existUser.username) {
+        const usernameExist = await User.exists({ username: body.username });
+        if (usernameExist) {
+          return NextResponse.json(
+            { error: "Username already exists" },
+            { status: 400 }
+          );
+        }
+      }
+
       await User.findByIdAndUpdate(userId, body, { new: true });
 
       return NextResponse.json({ message: "User updated successfully" });
     }
-
-    if (isExistinUsername) {
-      return NextResponse.json(
-        { error: "Username already exists" },
-        { status: 400 }
-      );
-    }
-
-    await User.findByIdAndUpdate(userId, body, { new: true });
-
-    return NextResponse.json({ message: "User updated successfully" });
   } catch (error) {
     const result = error as Error;
     return NextResponse.json({ error: result.message }, { status: 400 });

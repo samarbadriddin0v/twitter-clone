@@ -42,7 +42,7 @@ const EditForm = ({ user }: Props) => {
 
   const onSubmit = async (values: z.infer<typeof userSchema>) => {
     try {
-      await axios.put(`/api/users/${user._id}`, values);
+      await axios.put(`/api/users/${user._id}?type=updateFields`, values);
       router.refresh();
       editModal.onClose();
     } catch (error: any) {
