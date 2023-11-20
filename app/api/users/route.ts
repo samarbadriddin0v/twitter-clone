@@ -11,7 +11,8 @@ export async function GET(req: Request) {
 
     const users = await User.find({})
       .select("name username _id profileImage email")
-      .limit(Number(limit));
+      .limit(Number(limit))
+      .sort({ createdAt: -1 });
 
     return NextResponse.json(users);
   } catch (error) {

@@ -14,19 +14,19 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(false);
   const [posts, setPosts] = useState<IPost[]>([]);
 
-  useEffect(() => {
-    const getPosts = async () => {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get("/api/posts?limit=10");
-        setPosts(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-        setIsLoading(false);
-      }
-    };
+  const getPosts = async () => {
+    try {
+      setIsLoading(true);
+      const { data } = await axios.get("/api/posts?limit=20");
+      setPosts(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
 
+  useEffect(() => {
     getPosts();
   }, []);
 
