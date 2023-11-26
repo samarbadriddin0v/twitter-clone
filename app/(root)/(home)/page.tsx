@@ -3,6 +3,7 @@
 import Form from "@/components/shared/form";
 import Header from "@/components/shared/header";
 import PostItem from "@/components/shared/post-item";
+import usePosts from "@/hooks/usePosts";
 import { IPost } from "@/types";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
@@ -11,24 +12,14 @@ import { useEffect, useState } from "react";
 
 export default function Page() {
   const { data: session, status }: any = useSession();
-  const [isLoading, setIsLoading] = useState(false);
+  const { data, isLoading } = usePosts();
   const [posts, setPosts] = useState<IPost[]>([]);
 
-  const getPosts = async () => {
-    try {
-      setIsLoading(true);
-      const { data } = await axios.get("/api/posts?limit=20");
-      setPosts(data);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    getPosts();
-  }, []);
+    if (data) {
+      setPosts(data);
+    }
+  }, [data]);
 
   return (
     <>
