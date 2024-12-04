@@ -1,50 +1,32 @@
-"use client";
+import { getPosts } from '@/actions/post.action'
+import Form from '@/components/shared/form'
+import Header from '@/components/shared/header'
+import Pagination from '@/components/shared/pagination'
+import PostItem from '@/components/shared/post-item'
+import { authOptions } from '@/lib/auth-options'
+import { IPost, SearchParams } from '@/types'
+import { getServerSession } from 'next-auth'
 
-import Form from "@/components/shared/form";
-import Header from "@/components/shared/header";
-import PostItem from "@/components/shared/post-item";
-import usePosts from "@/hooks/usePosts";
-import { IPost } from "@/types";
-import axios from "axios";
-import { Loader2 } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+interface Props {
+	searchParams: SearchParams
+}
+export default async function Page({ searchParams }: Props) {
+	const session = await getServerSession(authOptions)
 
-export default function Page() {
-  const { data: session, status }: any = useSession();
-  const { data, isLoading } = usePosts();
-  const [posts, setPosts] = useState<IPost[]>([]);
+	const res = await getPosts({
+		page: parseInt(`${searchParams.page}`) || 1,
+	})
 
-  useEffect(() => {
-    if (data) {
-      setPosts(data);
-    }
-  }, [data]);
+	const posts = res?.data?.posts
+	const isNext = res?.data?.isNext || false
+	const user = JSON.parse(JSON.stringify(session?.currentUser))
 
-  return (
-    <>
-      <Header label="Home" />
-      {isLoading || status === "loading" ? (
-        <div className="flex justify-center items-center h-24">
-          <Loader2 className="animate-spin text-sky-500" />
-        </div>
-      ) : (
-        <>
-          <Form
-            placeholder="What's on your mind?"
-            user={JSON.parse(JSON.stringify(session.currentUser))}
-            setPosts={setPosts}
-          />
-          {posts.map((post) => (
-            <PostItem
-              key={post._id}
-              post={post}
-              user={JSON.parse(JSON.stringify(session.currentUser))}
-              setPosts={setPosts}
-            />
-          ))}
-        </>
-      )}
-    </>
-  );
+	return (
+		<>
+			<Header label='Home' />
+			<Form placeholder="What's on your mind?" user={user} />
+			{posts && posts.map(post => <PostItem key={post._id} post={post} user={user} />)}
+			<Pagination isNext={isNext} pageNumber={searchParams?.page ? +searchParams.page : 1} />
+		</>
+	)
 }
