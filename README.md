@@ -6,7 +6,7 @@
 
 <h2>🚀 Demo</h2>
 
-[https://x.sammi.pro/](https://x.sammi.pro/)
+[https://x.sammi.ac/](https://x.sammi.ac/)
 
   
   
