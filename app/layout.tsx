@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 		type: 'website',
 		url: 'https://x.sammi.ac',
 		locale: 'uz_UZ',
-		images: 'https://media.graphassets.com/BlWALPQCQGezpzZAhvaQ',
+		images: 'https://media.graphassets.com/3XlUA3OBSjaQcMNFYnVv',
 		countryName: 'Uzbekistan',
 		siteName: 'Sammi',
 		emails: 'info@sammi.ac',
