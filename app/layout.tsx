@@ -6,10 +6,24 @@ import { Provider } from "./provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Twitter X",
-  description: "Twitter X is a Twitter clone built with Next.js and MongoDB.",
-  icons: { icon: "/images/x.svg" },
-};
+	metadataBase: new URL('https://x.sammi.ac'),
+	title: 'Twitter X',
+	description: 'Twitter X is a Twitter clone built by Sammi.ac',
+	authors: [{ name: 'Samar Badriddinov', url: 'https://x.sammi.ac' }],
+	 icons: { icon: "/images/x.svg" },
+	openGraph: {
+		title: 'Twitter X',
+		description: "Twitter X is a Twitter clone built by Sammi.ac",
+		type: 'website',
+		url: 'https://x.sammi.ac',
+		locale: 'uz_UZ',
+		images: 'https://media.graphassets.com/qNE5ntEQR3WeJf88RXpg',
+		countryName: 'Uzbekistan',
+		siteName: 'Sammi',
+		emails: 'info@sammi.ac',
+	},
+	keywords: "Twitter, Twitter web, twitter clone, twitter web application, Ilon, Ilon Mask, samar badriddinov"
+}
 
 export default function RootLayout({
   children,
